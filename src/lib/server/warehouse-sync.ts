@@ -75,6 +75,11 @@ export async function loadWarehouseDb(): Promise<WarehouseDb> {
   };
 }
 
+/**
+ * Full-table wipe and re-import. Use only for db reset, seed, and local baseline restore —
+ * not for routine API mutations.
+ * @deprecated for application writes; use Prisma services instead.
+ */
 export async function saveWarehouseDb(db: WarehouseDb): Promise<void> {
   await prisma.$transaction(
     async (tx) => {

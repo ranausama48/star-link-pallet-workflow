@@ -27,7 +27,14 @@ const jsonFetch = async <T>(url: string, options?: RequestInit): Promise<T> => {
 
   const data = await res.json();
   if (!res.ok) {
-    throw new Error(data.error || data.message || `Request failed with status ${res.status}`);
+    const raw = data.error ?? data.message;
+    const detail =
+      typeof raw === 'string'
+        ? raw
+        : raw != null
+          ? JSON.stringify(raw)
+          : `Request failed with status ${res.status}`;
+    throw new Error(detail);
   }
   return data as T;
 };
