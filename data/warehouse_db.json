@@ -1,0 +1,673 @@
+{
+  "oracleConfig": {
+    "orderApiUrl": "https://tb7.wms.ocs.oraclecloud.com/dmcme_test/wms/lgfapi/v10/entity/order_hdr",
+    "shipmentApiUrl": "https://tb7.wms.ocs.oraclecloud.com/dmcme_test/wms/lgfapi/v10/entity/shipment_hdr",
+    "authType": "BASIC",
+    "username": "wms_api_admin",
+    "password": "Password123!",
+    "apiKeyOrToken": "",
+    "orderFields": "order_nbr",
+    "shipmentFields": "shipment_nbr",
+    "enabled": true,
+    "statusText": "Configured for Oracle WMS lgfapi/v10 (Order & Shipment Headers)",
+    "lastTestedAt": "2026-10-15T12:04:51.699Z",
+    "lastSyncStatus": "CONNECTED"
+  },
+  "oracleUsers": [
+    {
+      "username": "obaidullah.r",
+      "fullName": "Obaidullah Rana",
+      "email": "obaidullahrana2@gmail.com",
+      "department": "Logistics Architecture",
+      "oracleRole": "WMS_SUPER_USER",
+      "status": "ACTIVE"
+    },
+    {
+      "username": "admin.starlinks",
+      "fullName": "Starlinks System Admin",
+      "email": "admin@starlinks-logistics.com",
+      "department": "Warehouse Administration",
+      "oracleRole": "WMS_ADMIN",
+      "status": "ACTIVE"
+    },
+    {
+      "username": "faisal.m",
+      "fullName": "Faisal Al-Mansoor",
+      "email": "faisal.m@starlinks-logistics.com",
+      "department": "Supply Chain Management",
+      "oracleRole": "WMS_MANAGER",
+      "status": "ACTIVE"
+    },
+    {
+      "username": "khalid.ops",
+      "fullName": "Khalid Al-Ghamdi",
+      "email": "khalid.ops@starlinks-logistics.com",
+      "department": "Riyadh Inbound/Outbound Ops",
+      "oracleRole": "WMS_OPERATOR",
+      "status": "ACTIVE"
+    },
+    {
+      "username": "sara.a",
+      "fullName": "Sara Al-Otaibi",
+      "email": "sara.a@starlinks-logistics.com",
+      "department": "Jeddah Cross-Dock Operations",
+      "oracleRole": "WMS_OPERATOR",
+      "status": "ACTIVE"
+    },
+    {
+      "username": "inquiry.auditor",
+      "fullName": "Tariq Al-Harbi",
+      "email": "tariq.inquiry@starlinks-logistics.com",
+      "department": "Inventory Quality & Audit",
+      "oracleRole": "WMS_VIEWER",
+      "status": "ACTIVE"
+    },
+    {
+      "username": "new.operator",
+      "fullName": "Nawaf Al-Zahrani",
+      "email": "nawaf.z@starlinks-logistics.com",
+      "department": "Dammam Warehouse Inbound",
+      "oracleRole": "WMS_OPERATOR",
+      "status": "ACTIVE"
+    }
+  ],
+  "companies": [
+    {
+      "id": "COMP-01",
+      "code": "STL_GLOBAL",
+      "name": "Starlinks Global Logistics",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "COMP-02",
+      "code": "STL_KSA",
+      "name": "Starlinks KSA Express & Freight",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "COMP-03",
+      "code": "STL_RETAIL",
+      "name": "Starlinks E-Commerce & Retail Hub",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "COMP-04",
+      "code": "OFS",
+      "name": "OFS Distribution",
+      "status": "ACTIVE"
+    }
+  ],
+  "facilities": [
+    {
+      "id": "FAC-01",
+      "code": "RIYADH",
+      "name": "Riyadh Central Mega-Hub (RIYADH)",
+      "city": "Riyadh",
+      "companyIds": [
+        "COMP-01",
+        "COMP-02",
+        "COMP-04"
+      ],
+      "status": "ACTIVE"
+    },
+    {
+      "id": "FAC-02",
+      "code": "JEDDAH",
+      "name": "Jeddah Port Cross-Dock (JEDDAH)",
+      "city": "Jeddah",
+      "companyIds": [
+        "COMP-01",
+        "COMP-03",
+        "COMP-04"
+      ],
+      "status": "ACTIVE"
+    },
+    {
+      "id": "FAC-03",
+      "code": "DAMMAM",
+      "name": "Dammam Logistics Park (DAMMAM)",
+      "city": "Dammam",
+      "companyIds": [
+        "COMP-02",
+        "COMP-04"
+      ],
+      "status": "ACTIVE"
+    },
+    {
+      "id": "FAC-04",
+      "code": "SULAY",
+      "name": "Sulay Air Cargo Distribution (SULAY)",
+      "city": "Riyadh",
+      "companyIds": [
+        "COMP-02",
+        "COMP-04"
+      ],
+      "status": "ACTIVE"
+    },
+    {
+      "id": "FAC-05",
+      "code": "DUBAI",
+      "name": "Dubai South Fulfillment Hub (DUBAI)",
+      "city": "Dubai",
+      "companyIds": [
+        "COMP-01",
+        "COMP-03"
+      ],
+      "status": "ACTIVE"
+    }
+  ],
+  "palletTypes": [
+    {
+      "id": "PLT-WOOD",
+      "code": "WOODEN",
+      "name": "Standard Industrial Wooden Pallet",
+      "material": "Wood",
+      "lengthCm": 120,
+      "widthCm": 100,
+      "heightCm": 15,
+      "tareWeightKg": 22,
+      "maxLoadKg": 1500,
+      "color": "#D97706",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "PLT-EURO",
+      "code": "EURO",
+      "name": "EUR / EPAL Standard Pallet",
+      "material": "Wood",
+      "lengthCm": 120,
+      "widthCm": 80,
+      "heightCm": 14.4,
+      "tareWeightKg": 25,
+      "maxLoadKg": 1500,
+      "color": "#059669",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "PLT-PLAST",
+      "code": "PLASTIC",
+      "name": "Heavy-Duty Hygienic Plastic Pallet",
+      "material": "Plastic",
+      "lengthCm": 120,
+      "widthCm": 100,
+      "heightCm": 16,
+      "tareWeightKg": 18,
+      "maxLoadKg": 1250,
+      "color": "#0284C7",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "PLT-METAL",
+      "code": "METAL",
+      "name": "Galvanized Steel Heavy Pallet",
+      "material": "Metal",
+      "lengthCm": 120,
+      "widthCm": 100,
+      "heightCm": 15,
+      "tareWeightKg": 38,
+      "maxLoadKg": 2800,
+      "color": "#64748B",
+      "status": "ACTIVE"
+    }
+  ],
+  "docRefTypes": [
+    {
+      "id": "REF-DO",
+      "code": "DELIVERY_ORDER",
+      "name": "Delivery Order Number",
+      "description": "Outbound sales/delivery order number",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "REF-ORDER",
+      "code": "ORDER_NO",
+      "name": "Order Number",
+      "description": "Customer or Transfer Order number",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "REF-PO",
+      "code": "PO_NO",
+      "name": "PO#",
+      "description": "Purchase Order / Damage Signoff PO number",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "REF-SHIP",
+      "code": "SHIPMENT_NO",
+      "name": "Shipment Number",
+      "description": "Shipment manifest identifier",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "REF-TO",
+      "code": "TRANSFER_NO",
+      "name": "Transfer Order Number",
+      "description": "Inter-facility transfer document",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "REF-ASN",
+      "code": "ASN_NO",
+      "name": "Advance Shipping Notice (ASN)",
+      "description": "Pre-advised vendor shipping notification",
+      "status": "ACTIVE"
+    }
+  ],
+  "users": [
+    {
+      "id": "USR-01",
+      "username": "obaidullah.r",
+      "fullName": "Obaidullah Rana",
+      "email": "obaidullahrana2@gmail.com",
+      "role": "Admin",
+      "passwordHash": "password123",
+      "hasAppPassword": true,
+      "assignedFaco": [
+        {
+          "companyId": "COMP-01",
+          "facilityId": "FAC-01"
+        },
+        {
+          "companyId": "COMP-04",
+          "facilityId": "FAC-01"
+        },
+        {
+          "companyId": "COMP-01",
+          "facilityId": "FAC-02"
+        },
+        {
+          "companyId": "COMP-02",
+          "facilityId": "FAC-03"
+        },
+        {
+          "companyId": "COMP-02",
+          "facilityId": "FAC-04"
+        },
+        {
+          "companyId": "COMP-03",
+          "facilityId": "FAC-05"
+        }
+      ],
+      "screenPermissions": {
+        "pallet_inbound": "all",
+        "pallet_outbound": "all",
+        "analytics_soh": "all",
+        "analytics_ib": "all",
+        "analytics_ob": "all",
+        "analytics_visuals": "all",
+        "admin_users": "all",
+        "admin_faco": "all",
+        "admin_pallets": "all",
+        "admin_docref": "all",
+        "admin_oracle": "all"
+      },
+      "oracleVerified": true,
+      "oracleVerifiedAt": "2026-09-01T08:00:00.000Z",
+      "createdAt": "2026-09-01T08:00:00.000Z",
+      "updatedAt": "2026-10-15T02:00:00.000Z"
+    },
+    {
+      "id": "USR-02",
+      "username": "admin.starlinks",
+      "fullName": "Starlinks Admin",
+      "email": "admin@starlinks-logistics.com",
+      "role": "Admin",
+      "passwordHash": "password123",
+      "hasAppPassword": true,
+      "assignedFaco": [
+        {
+          "companyId": "COMP-01",
+          "facilityId": "FAC-01"
+        },
+        {
+          "companyId": "COMP-04",
+          "facilityId": "FAC-01"
+        },
+        {
+          "companyId": "COMP-01",
+          "facilityId": "FAC-02"
+        },
+        {
+          "companyId": "COMP-02",
+          "facilityId": "FAC-03"
+        },
+        {
+          "companyId": "COMP-02",
+          "facilityId": "FAC-04"
+        },
+        {
+          "companyId": "COMP-03",
+          "facilityId": "FAC-05"
+        }
+      ],
+      "screenPermissions": {
+        "pallet_inbound": "all",
+        "pallet_outbound": "all",
+        "analytics_soh": "all",
+        "analytics_ib": "all",
+        "analytics_ob": "all",
+        "analytics_visuals": "all",
+        "admin_users": "all",
+        "admin_faco": "all",
+        "admin_pallets": "all",
+        "admin_docref": "all",
+        "admin_oracle": "all"
+      },
+      "oracleVerified": true,
+      "oracleVerifiedAt": "2026-09-01T08:00:00.000Z",
+      "createdAt": "2026-09-01T08:00:00.000Z",
+      "updatedAt": "2026-10-15T02:00:00.000Z"
+    },
+    {
+      "id": "USR-03",
+      "username": "khalid.ops",
+      "fullName": "Khalid Al-Ghamdi",
+      "email": "khalid.ops@starlinks-logistics.com",
+      "role": "Operations",
+      "passwordHash": "password123",
+      "hasAppPassword": true,
+      "assignedFaco": [
+        {
+          "companyId": "COMP-01",
+          "facilityId": "FAC-01"
+        },
+        {
+          "companyId": "COMP-04",
+          "facilityId": "FAC-01"
+        },
+        {
+          "companyId": "COMP-01",
+          "facilityId": "FAC-02"
+        }
+      ],
+      "screenPermissions": {
+        "pallet_inbound": "edit",
+        "pallet_outbound": "edit",
+        "analytics_soh": "view",
+        "analytics_ib": "view",
+        "analytics_ob": "view",
+        "analytics_visuals": "view",
+        "admin_users": "none",
+        "admin_faco": "none",
+        "admin_pallets": "none",
+        "admin_docref": "none",
+        "admin_oracle": "none"
+      },
+      "oracleVerified": true,
+      "oracleVerifiedAt": "2026-09-10T09:30:00.000Z",
+      "createdAt": "2026-09-10T09:30:00.000Z",
+      "updatedAt": "2026-10-14T11:00:00.000Z"
+    },
+    {
+      "id": "USR-04",
+      "username": "faisal.m",
+      "fullName": "Faisal Al-Mansoor",
+      "email": "faisal.m@starlinks-logistics.com",
+      "role": "Management",
+      "passwordHash": "password123",
+      "hasAppPassword": true,
+      "assignedFaco": [
+        {
+          "companyId": "COMP-01",
+          "facilityId": "FAC-01"
+        },
+        {
+          "companyId": "COMP-04",
+          "facilityId": "FAC-01"
+        },
+        {
+          "companyId": "COMP-01",
+          "facilityId": "FAC-02"
+        }
+      ],
+      "screenPermissions": {
+        "pallet_inbound": "view",
+        "pallet_outbound": "view",
+        "analytics_soh": "view",
+        "analytics_ib": "view",
+        "analytics_ob": "view",
+        "analytics_visuals": "view",
+        "admin_users": "none",
+        "admin_faco": "view",
+        "admin_pallets": "view",
+        "admin_docref": "view",
+        "admin_oracle": "none"
+      },
+      "oracleVerified": true,
+      "oracleVerifiedAt": "2026-09-05T12:00:00.000Z",
+      "createdAt": "2026-09-05T12:00:00.000Z",
+      "updatedAt": "2026-10-12T14:20:00.000Z"
+    },
+    {
+      "id": "USR-05",
+      "username": "inquiry.auditor",
+      "fullName": "Tariq Al-Harbi",
+      "email": "tariq.inquiry@starlinks-logistics.com",
+      "role": "Inquiry",
+      "passwordHash": "password123",
+      "hasAppPassword": true,
+      "assignedFaco": [
+        {
+          "companyId": "COMP-01",
+          "facilityId": "FAC-01"
+        },
+        {
+          "companyId": "COMP-02",
+          "facilityId": "FAC-03"
+        }
+      ],
+      "screenPermissions": {
+        "pallet_inbound": "view",
+        "pallet_outbound": "view",
+        "analytics_soh": "view",
+        "analytics_ib": "view",
+        "analytics_ob": "view",
+        "analytics_visuals": "view",
+        "admin_users": "none",
+        "admin_faco": "none",
+        "admin_pallets": "none",
+        "admin_docref": "none",
+        "admin_oracle": "none"
+      },
+      "oracleVerified": true,
+      "oracleVerifiedAt": "2026-09-15T15:00:00.000Z",
+      "createdAt": "2026-09-15T15:00:00.000Z",
+      "updatedAt": "2026-10-01T10:00:00.000Z"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "TXN-IB-101",
+      "type": "INBOUND",
+      "source": "MKT_PURCHASE",
+      "sourceLabel": "Market Purchase",
+      "companyId": "COMP-01",
+      "companyCode": "STL_GLOBAL",
+      "companyName": "Starlinks Global Logistics",
+      "facilityId": "FAC-01",
+      "facilityCode": "RIYADH",
+      "facilityName": "Riyadh Central Mega-Hub (RIYADH)",
+      "docRefTypeId": "REF-PO",
+      "docRefTypeName": "PO#",
+      "docRefNumber": "PO-2026-9041",
+      "palletTypeId": "PLT-WOOD",
+      "palletTypeCode": "WOODEN",
+      "palletTypeName": "Standard Industrial Wooden Pallet",
+      "qty": 450,
+      "notes": "Initial lot replenishment from Al-Yamama Pallets",
+      "createdByUserId": "USR-01",
+      "createdByUsername": "obaidullah.r",
+      "createdByName": "Obaidullah Rana",
+      "timestamp": "2026-09-02T09:15:00.000Z"
+    },
+    {
+      "id": "TXN-IB-102",
+      "type": "INBOUND",
+      "source": "RCV_SHIPMENT",
+      "sourceLabel": "Shipment Receipt",
+      "companyId": "COMP-04",
+      "companyCode": "OFS",
+      "companyName": "OFS Distribution",
+      "facilityId": "FAC-01",
+      "facilityCode": "RIYADH",
+      "facilityName": "Riyadh Central Mega-Hub (RIYADH)",
+      "docRefTypeId": "REF-SHIP",
+      "docRefTypeName": "Shipment Number",
+      "docRefNumber": "SHP-992182",
+      "palletTypeId": "PLT-EURO",
+      "palletTypeCode": "EURO",
+      "palletTypeName": "EUR / EPAL Standard Pallet",
+      "qty": 280,
+      "notes": "Received with electronics container from King Abdulaziz Port",
+      "createdByUserId": "USR-03",
+      "createdByUsername": "khalid.ops",
+      "createdByName": "Khalid Al-Ghamdi",
+      "timestamp": "2026-09-08T11:45:00.000Z"
+    },
+    {
+      "id": "TXN-IB-103",
+      "type": "INBOUND",
+      "source": "RCV_SHIPMENT",
+      "sourceLabel": "Shipment Receipt",
+      "companyId": "COMP-01",
+      "companyCode": "STL_GLOBAL",
+      "companyName": "Starlinks Global Logistics",
+      "facilityId": "FAC-02",
+      "facilityCode": "JEDDAH",
+      "facilityName": "Jeddah Port Cross-Dock (JEDDAH)",
+      "docRefTypeId": "REF-SHIP",
+      "docRefTypeName": "Shipment Number",
+      "docRefNumber": "SHP-JED-4402",
+      "palletTypeId": "PLT-PLAST",
+      "palletTypeCode": "PLASTIC",
+      "palletTypeName": "Heavy-Duty Hygienic Plastic Pallet",
+      "qty": 320,
+      "notes": "Pharma temperature controlled consignment receipt",
+      "createdByUserId": "USR-03",
+      "createdByUsername": "khalid.ops",
+      "createdByName": "Khalid Al-Ghamdi",
+      "timestamp": "2026-09-15T14:30:00.000Z"
+    },
+    {
+      "id": "TXN-IB-104",
+      "type": "INBOUND",
+      "source": "IOT_IN",
+      "sourceLabel": "IOT Inbound",
+      "companyId": "COMP-01",
+      "companyCode": "STL_GLOBAL",
+      "companyName": "Starlinks Global Logistics",
+      "facilityId": "FAC-01",
+      "facilityCode": "RIYADH",
+      "facilityName": "Riyadh Central Mega-Hub (RIYADH)",
+      "docRefTypeId": "REF-TO",
+      "docRefTypeName": "Transfer Order Number",
+      "docRefNumber": "TO-JED-RUH-882",
+      "palletTypeId": "PLT-WOOD",
+      "palletTypeCode": "WOODEN",
+      "palletTypeName": "Standard Industrial Wooden Pallet",
+      "qty": 120,
+      "notes": "Transferred from Jeddah Port depot buffer",
+      "createdByUserId": "USR-03",
+      "createdByUsername": "khalid.ops",
+      "createdByName": "Khalid Al-Ghamdi",
+      "timestamp": "2026-09-22T16:00:00.000Z"
+    },
+    {
+      "id": "TXN-OB-201",
+      "type": "OUTBOUND",
+      "source": "OUT_ORDER",
+      "sourceLabel": "Out on Order",
+      "companyId": "COMP-04",
+      "companyCode": "OFS",
+      "companyName": "OFS Distribution",
+      "facilityId": "FAC-01",
+      "facilityCode": "RIYADH",
+      "facilityName": "Riyadh Central Mega-Hub (RIYADH)",
+      "docRefTypeId": "REF-DO",
+      "docRefTypeName": "Delivery Order Number",
+      "docRefNumber": "DO-RUH-88201",
+      "palletTypeId": "PLT-WOOD",
+      "palletTypeCode": "WOODEN",
+      "palletTypeName": "Standard Industrial Wooden Pallet",
+      "qty": 180,
+      "notes": "Dispatched on FMCG bulk order to Panda Hypermarkets",
+      "createdByUserId": "USR-03",
+      "createdByUsername": "khalid.ops",
+      "createdByName": "Khalid Al-Ghamdi",
+      "timestamp": "2026-09-12T15:40:00.000Z"
+    },
+    {
+      "id": "TXN-OB-202",
+      "type": "OUTBOUND",
+      "source": "IOT_XFER",
+      "sourceLabel": "IOT Transfer",
+      "companyId": "COMP-01",
+      "companyCode": "STL_GLOBAL",
+      "companyName": "Starlinks Global Logistics",
+      "facilityId": "FAC-01",
+      "facilityCode": "RIYADH",
+      "facilityName": "Riyadh Central Mega-Hub (RIYADH)",
+      "docRefTypeId": "REF-ORDER",
+      "docRefTypeName": "Order Number",
+      "docRefNumber": "ORD-RUH-JED-710",
+      "palletTypeId": "PLT-EURO",
+      "palletTypeCode": "EURO",
+      "palletTypeName": "EUR / EPAL Standard Pallet",
+      "qty": 90,
+      "notes": "Inter-facility transfer to Jeddah Port Cross-dock",
+      "createdByUserId": "USR-03",
+      "createdByUsername": "khalid.ops",
+      "createdByName": "Khalid Al-Ghamdi",
+      "timestamp": "2026-09-20T17:15:00.000Z"
+    },
+    {
+      "id": "TXN-OB-203",
+      "type": "OUTBOUND",
+      "source": "DMG_SIGNOFF",
+      "sourceLabel": "Damage Signoff",
+      "companyId": "COMP-01",
+      "companyCode": "STL_GLOBAL",
+      "companyName": "Starlinks Global Logistics",
+      "facilityId": "FAC-01",
+      "facilityCode": "RIYADH",
+      "facilityName": "Riyadh Central Mega-Hub (RIYADH)",
+      "docRefTypeId": "REF-PO",
+      "docRefTypeName": "PO#",
+      "docRefNumber": "DMG-PO-041",
+      "palletTypeId": "PLT-WOOD",
+      "palletTypeCode": "WOODEN",
+      "palletTypeName": "Standard Industrial Wooden Pallet",
+      "qty": 15,
+      "notes": "Forklift impact damage - decommissioned and sent to recycling",
+      "createdByUserId": "USR-01",
+      "createdByUsername": "obaidullah.r",
+      "createdByName": "Obaidullah Rana",
+      "timestamp": "2026-09-28T09:00:00.000Z"
+    },
+    {
+      "id": "TXN-OB-204",
+      "type": "OUTBOUND",
+      "source": "DMG_SOLD",
+      "sourceLabel": "Damage Sold",
+      "companyId": "COMP-01",
+      "companyCode": "STL_GLOBAL",
+      "companyName": "Starlinks Global Logistics",
+      "facilityId": "FAC-01",
+      "facilityCode": "RIYADH",
+      "facilityName": "Riyadh Central Mega-Hub (RIYADH)",
+      "docRefTypeId": "REF-PO",
+      "docRefTypeName": "PO#",
+      "docRefNumber": "SALVAGE-PO-12",
+      "palletTypeId": "PLT-WOOD",
+      "palletTypeCode": "WOODEN",
+      "palletTypeName": "Standard Industrial Wooden Pallet",
+      "qty": 35,
+      "notes": "Sold to local certified pallet refurbisher scrap lot",
+      "createdByUserId": "USR-01",
+      "createdByUsername": "obaidullah.r",
+      "createdByName": "Obaidullah Rana",
+      "timestamp": "2026-10-12T16:30:00.000Z"
+    }
+  ]
+}

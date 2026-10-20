@@ -1,0 +1,6 @@
+{
+  "name": "Starlinks Pallet Flow - Warehouse Inventory Tracker",
+  "description": "Enterprise pallet inventory tracking system for multi-company and multi-facility logistics with Oracle WMS integration, Inbound/Outbound management, SOH analytics, and role-based access control.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

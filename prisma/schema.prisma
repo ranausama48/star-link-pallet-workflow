@@ -1,0 +1,126 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Company {
+  id            String            @id
+  code          String            @unique
+  name          String
+  status        String            @default("ACTIVE")
+  facilities    Facility[]        @relation("PrimaryCompany")
+  facilityLinks FacilityCompany[]
+}
+
+model Facility {
+  id               String              @id
+  code             String              @unique
+  name             String
+  city             String
+  status           String              @default("ACTIVE")
+  primaryCompanyId String
+  primaryCompany   Company             @relation("PrimaryCompany", fields: [primaryCompanyId], references: [id])
+  companies        FacilityCompany[]
+  transactions     PalletTransaction[]
+}
+
+model FacilityCompany {
+  facilityId String
+  companyId  String
+  facility   Facility @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  company    Company  @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  @@id([facilityId, companyId])
+}
+
+model PalletType {
+  id           String              @id
+  code         String              @unique
+  name         String
+  material     String
+  lengthCm     Float
+  widthCm      Float
+  heightCm     Float
+  tareWeightKg Float
+  maxLoadKg    Float
+  color        String?
+  status       String              @default("ACTIVE")
+  transactions PalletTransaction[]
+}
+
+model DocRefType {
+  id           String              @id
+  code         String              @unique
+  name         String
+  description  String              @default("")
+  patternMask  String?
+  status       String              @default("ACTIVE")
+  transactions PalletTransaction[]
+}
+
+model UserAccount {
+  id                String    @id
+  username          String    @unique
+  fullName          String
+  email             String
+  role              String
+  passwordHash      String
+  hasAppPassword    Boolean   @default(false)
+  assignedFaco      Json
+  screenPermissions Json
+  oracleVerified    Boolean   @default(false)
+  oracleVerifiedAt  DateTime?
+  createdAt         DateTime
+  updatedAt         DateTime
+}
+
+model OracleWmsUser {
+  username   String @id
+  fullName   String
+  email      String
+  department String
+  oracleRole String
+  status     String
+}
+
+model OracleWmsConfig {
+  id     String @id @default("default")
+  config Json
+}
+
+model PalletTransaction {
+  id                String     @id
+  type              String
+  source            String
+  sourceLabel       String
+  companyId         String
+  companyCode       String
+  companyName       String
+  facilityId        String
+  facilityCode      String
+  facilityName      String
+  docRefTypeId      String
+  docRefTypeName    String
+  docRefNumber      String
+  palletTypeId      String
+  palletTypeCode    String
+  palletTypeName    String
+  qty               Int
+  notes             String     @default("")
+  createdByUserId   String
+  createdByUsername String
+  createdByName     String
+  timestamp         DateTime
+  facility          Facility   @relation(fields: [facilityId], references: [id])
+  palletType        PalletType @relation(fields: [palletTypeId], references: [id])
+  docRefType        DocRefType @relation(fields: [docRefTypeId], references: [id])
+
+  @@index([facilityId, palletTypeId, timestamp])
+  @@index([type])
+  @@index([companyId])
+}
