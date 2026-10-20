@@ -34,6 +34,26 @@ export function LoginModal({ onLoginSuccess }: LoginModalProps) {
     setSuccessMessage('');
   };
 
+  const quickLogin = async (u: string, p: string) => {
+    fillProfile(u, p);
+    setIsLoading(true);
+    setErrorMessage('');
+    try {
+      const res = await api.login(u.trim(), p);
+      onLoginSuccess(res.user);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'Login failed';
+      if (message.includes('create an app password first')) {
+        setStep('create_password');
+        setErrorMessage('User verified in Oracle WMS. Please create your app password below.');
+      } else {
+        setErrorMessage(message);
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   // Step 1: Verify Username against Oracle WMS
   const handleVerifyUsername = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
@@ -368,8 +388,9 @@ export function LoginModal({ onLoginSuccess }: LoginModalProps) {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 text-left">
               <button
                 type="button"
-                onClick={() => fillProfile('obaidullah.r', 'password123')}
-                className="p-2 rounded-lg border border-slate-200 hover:border-emerald-700 hover:bg-emerald-50/50 text-left transition-colors text-xs"
+                disabled={isLoading}
+                onClick={() => quickLogin('obaidullah.r', 'password123')}
+                className="p-2 rounded-lg border border-slate-200 hover:border-emerald-700 hover:bg-emerald-50/50 text-left transition-colors text-xs disabled:opacity-50"
               >
                 <div className="font-semibold text-slate-900 truncate">Obaidullah R.</div>
                 <div className="text-[10px] text-emerald-800 font-medium">Admin (Full)</div>
@@ -377,8 +398,9 @@ export function LoginModal({ onLoginSuccess }: LoginModalProps) {
 
               <button
                 type="button"
-                onClick={() => fillProfile('khalid.ops', 'password123')}
-                className="p-2 rounded-lg border border-slate-200 hover:border-emerald-700 hover:bg-emerald-50/50 text-left transition-colors text-xs"
+                disabled={isLoading}
+                onClick={() => quickLogin('khalid.ops', 'password123')}
+                className="p-2 rounded-lg border border-slate-200 hover:border-emerald-700 hover:bg-emerald-50/50 text-left transition-colors text-xs disabled:opacity-50"
               >
                 <div className="font-semibold text-slate-900 truncate">Khalid Ops</div>
                 <div className="text-[10px] text-slate-600 font-medium">Operations</div>
@@ -386,8 +408,9 @@ export function LoginModal({ onLoginSuccess }: LoginModalProps) {
 
               <button
                 type="button"
-                onClick={() => fillProfile('faisal.m', 'password123')}
-                className="p-2 rounded-lg border border-slate-200 hover:border-emerald-700 hover:bg-emerald-50/50 text-left transition-colors text-xs"
+                disabled={isLoading}
+                onClick={() => quickLogin('faisal.m', 'password123')}
+                className="p-2 rounded-lg border border-slate-200 hover:border-emerald-700 hover:bg-emerald-50/50 text-left transition-colors text-xs disabled:opacity-50"
               >
                 <div className="font-semibold text-slate-900 truncate">Faisal M.</div>
                 <div className="text-[10px] text-slate-600 font-medium">Management</div>
@@ -395,8 +418,9 @@ export function LoginModal({ onLoginSuccess }: LoginModalProps) {
 
               <button
                 type="button"
-                onClick={() => fillProfile('inquiry.auditor', 'password123')}
-                className="p-2 rounded-lg border border-slate-200 hover:border-emerald-700 hover:bg-emerald-50/50 text-left transition-colors text-xs"
+                disabled={isLoading}
+                onClick={() => quickLogin('inquiry.auditor', 'password123')}
+                className="p-2 rounded-lg border border-slate-200 hover:border-emerald-700 hover:bg-emerald-50/50 text-left transition-colors text-xs disabled:opacity-50"
               >
                 <div className="font-semibold text-slate-900 truncate">Tariq Auditor</div>
                 <div className="text-[10px] text-slate-600 font-medium">Inquiry (View)</div>

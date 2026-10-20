@@ -77,14 +77,6 @@ export default function App() {
       setOracleConfig(data.oracleConfig || null);
       setOracleUsers(data.oracleUsers || []);
       setAllUsers(data.users || []);
-
-      // Demo default: only if no saved session after hydration
-      const savedSession = localStorage.getItem(USER_SESSION_KEY);
-      if (!savedSession && data.users && data.users.length > 0) {
-        const rootAdmin = data.users.find((u) => u.username === 'obaidullah.r') || data.users[0];
-        setCurrentUser(rootAdmin);
-        localStorage.setItem(USER_SESSION_KEY, JSON.stringify(rootAdmin));
-      }
     } catch (err) {
       console.error('Failed to load initial master data:', err);
     }
