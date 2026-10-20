@@ -65,3 +65,17 @@ Open [http://localhost:3000](http://localhost:3000).
 - `data/warehouse_db.json` — Seed / reset baseline snapshot
 
 Legacy `server.ts` (Vite + Express) is retained for reference only; **use `npm run dev` (Next.js)** for local development.
+
+## Deploy on Vercel
+
+1. Import the GitHub repo: [ranausama48/star-link-pallet-workflow](https://github.com/ranausama48/star-link-pallet-workflow)
+2. In **Project → Settings → Environment Variables**, add (Production + Preview):
+   - `DATABASE_URL` — Supabase **pooler** (transaction, port 6543, `?pgbouncer=true`)
+   - `DIRECT_URL` — Supabase **direct** (port 5432)
+3. Deploy (push to `main` or `npx vercel deploy --prod`)
+
+Production URL: **https://star-link-pallet-workflow.vercel.app**
+
+Run migrations and seed **once** against Supabase from your machine (`npm run db:migrate`, `npm run db:seed`); Vercel does not run migrations automatically.
+
+If the project folder name contains `---`, set the Vercel project name to `star-link-pallet-workflow` when importing.
