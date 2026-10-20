@@ -66,32 +66,22 @@ export default function App() {
   // Initial Data Loader
   const loadMasterData = useCallback(async () => {
     try {
-      const [facoRes, palletsRes, docRefsRes, txnsRes, sohRes, configRes, oUsersRes, usersRes] =
-        await Promise.all([
-          api.getCompaniesFacilities(),
-          api.getPalletTypes(),
-          api.getDocRefTypes(),
-          api.getTransactions(),
-          api.getSOH(),
-          api.getOracleConfig(),
-          api.getOracleUsers(),
-          api.getUsers(),
-        ]);
+      const data = await api.getBootstrap();
 
-      setCompanies(facoRes.companies || []);
-      setFacilities(facoRes.facilities || []);
-      setPalletTypes(palletsRes || []);
-      setDocRefTypes(docRefsRes || []);
-      setTransactions(txnsRes || []);
-      setSohRecords(sohRes || []);
-      setOracleConfig(configRes || null);
-      setOracleUsers(oUsersRes || []);
-      setAllUsers(usersRes || []);
+      setCompanies(data.companies || []);
+      setFacilities(data.facilities || []);
+      setPalletTypes(data.palletTypes || []);
+      setDocRefTypes(data.docRefTypes || []);
+      setTransactions(data.transactions || []);
+      setSohRecords(data.sohRecords || []);
+      setOracleConfig(data.oracleConfig || null);
+      setOracleUsers(data.oracleUsers || []);
+      setAllUsers(data.users || []);
 
       // Demo default: only if no saved session after hydration
       const savedSession = localStorage.getItem(USER_SESSION_KEY);
-      if (!savedSession && usersRes && usersRes.length > 0) {
-        const rootAdmin = usersRes.find((u) => u.username === 'obaidullah.r') || usersRes[0];
+      if (!savedSession && data.users && data.users.length > 0) {
+        const rootAdmin = data.users.find((u) => u.username === 'obaidullah.r') || data.users[0];
         setCurrentUser(rootAdmin);
         localStorage.setItem(USER_SESSION_KEY, JSON.stringify(rootAdmin));
       }

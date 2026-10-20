@@ -33,6 +33,20 @@ const jsonFetch = async <T>(url: string, options?: RequestInit): Promise<T> => {
 };
 
 export const api = {
+  /** Single round-trip for initial dashboard load (recommended on serverless). */
+  getBootstrap: () =>
+    jsonFetch<{
+      companies: Company[];
+      facilities: Facility[];
+      palletTypes: PalletType[];
+      docRefTypes: DocRefType[];
+      transactions: PalletTransaction[];
+      sohRecords: StockOnHandRecord[];
+      oracleConfig: OracleWmsConfig;
+      oracleUsers: OracleWmsUser[];
+      users: UserAccount[];
+    }>('/api/bootstrap'),
+
   // Oracle WMS Verification & Auth
   verifyOracleUser: (username: string) =>
     jsonFetch<{
